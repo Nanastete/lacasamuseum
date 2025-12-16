@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://lacasadeteresita.netlify.app/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lacasadeteresita.netlify.app/house1.jpg</image:loc>
+      <image:title>La Casa de Teresita - Boutique Hotel La Paz</image:title>
+    </image:image>
+  </url>
+
+  <!-- Chambre Deluxe Queen -->
+  <url>
+    <loc>https://lacasadeteresita.netlify.app/rooms/deluxe-queen</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lacasadeteresita.netlify.app/queenBedDeluxe.jpg</image:loc>
+      <image:title>Deluxe Queen Room - La Casa de Teresita</image:title>
+    </image:image>
+  </url>
+
+  <!-- Chambre Simple -->
+  <url>
+    <loc>https://lacasadeteresita.netlify.app/rooms/single</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lacasadeteresita.netlify.app/simpleRoom.jpg</image:loc>
+      <image:title>Single Room - La Casa de Teresita</image:title>
+    </image:image>
+  </url>
+
+  <!-- Chambre Familiale -->
+  <url>
+    <loc>https://lacasadeteresita.netlify.app/rooms/family</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lacasadeteresita.netlify.app/doubleFamilial.jpg</image:loc>
+      <image:title>Family Double Room - La Casa de Teresita</image:title>
+    </image:image>
+  </url>
+
+  <!-- Chambre Twin -->
+  <url>
+    <loc>https://lacasadeteresita.netlify.app/rooms/twin</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lacasadeteresita.netlify.app/2litsSimples.jpg</image:loc>
+      <image:title>Twin Room - La Casa de Teresita</image:title>
+    </image:image>
+  </url>
+
+</urlset>
