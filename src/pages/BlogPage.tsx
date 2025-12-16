@@ -19,20 +19,22 @@ const BlogPage = () => {
   }, [language, selectedCategory]);
   
   const loadPosts = async () => {
-    setLoading(true);
-    try {
-      const loadedPosts = await getBlogPostsByCategory(
-        selectedCategory === 'All' ? null : selectedCategory, 
-        language
-      );
-      setPosts(loadedPosts);
-    } catch (error) {
-      console.error('Error loading blog posts:', error);
-      setPosts([]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  setLoading(true);
+  try {
+    console.log('🔍 Loading posts for:', language, 'category:', selectedCategory);
+    const loadedPosts = await getBlogPostsByCategory(
+      selectedCategory === 'All' ? null : selectedCategory, 
+      language
+    );
+    console.log('✅ Posts loaded:', loadedPosts);
+    setPosts(loadedPosts);
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    setPosts([]);
+  } finally {
+    setLoading(false);
+  }
+};
   
   return (
     <div className="min-h-screen pt-20 bg-[#F8F5F2]">
