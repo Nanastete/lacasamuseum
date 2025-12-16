@@ -45,8 +45,30 @@ function generateBlogManifests(contentDir) {
       fs.mkdirSync(langDir, { recursive: true });
     }
     
-    const files = fs.readdirSync(langDir)
-      .filter(file => file.endsWith('.md'))
+    // Read all files in the directory
+    let allFiles = [];
+    try {
+      allFiles = fs.readdirSync(langDir);
+    } catch (error) {
+      console.log(`⚠️  Cannot read blog/${lang} directory`);
+      allFiles = [];
+    }
+    
+    // Filter only .md files and sort by date
+    const files = allFiles
+      .filter(file => {
+        // Only .md files, exclude manifest.json and other files
+        if (!file.endsWith('.md')) return false;
+        
+        // Check if file has content (not empty)
+        try {
+          const filePath = path.join(langDir, file);
+          const stats = fs.statSync(filePath);
+          return stats.size > 100; // File must have at least 100 bytes
+        } catch {
+          return false;
+        }
+      })
       .sort((a, b) => {
         // Sort by date (newest first) based on filename pattern: YYYY-MM-DD-slug.md
         const dateA = a.split('-').slice(0, 3).join('-');
@@ -65,6 +87,9 @@ function generateBlogManifests(contentDir) {
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
     
     console.log(`📝 Blog (${lang}): ${files.length} posts`);
+    if (files.length > 0) {
+      console.log(`   Files: ${files.join(', ')}`);
+    }
   });
 }
 
@@ -84,8 +109,30 @@ function generateMuseumManifests(contentDir) {
       fs.mkdirSync(langDir, { recursive: true });
     }
     
-    const files = fs.readdirSync(langDir)
-      .filter(file => file.endsWith('.md'))
+    // Read all files in the directory
+    let allFiles = [];
+    try {
+      allFiles = fs.readdirSync(langDir);
+    } catch (error) {
+      console.log(`⚠️  Cannot read museum/${lang} directory`);
+      allFiles = [];
+    }
+    
+    // Filter only .md files
+    const files = allFiles
+      .filter(file => {
+        // Only .md files, exclude manifest.json
+        if (!file.endsWith('.md')) return false;
+        
+        // Check if file has content
+        try {
+          const filePath = path.join(langDir, file);
+          const stats = fs.statSync(filePath);
+          return stats.size > 100;
+        } catch {
+          return false;
+        }
+      })
       .sort();
     
     const manifest = {
@@ -99,6 +146,9 @@ function generateMuseumManifests(contentDir) {
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
     
     console.log(`🏛️  Museum (${lang}): ${files.length} artworks`);
+    if (files.length > 0) {
+      console.log(`   Files: ${files.join(', ')}`);
+    }
   });
 }
 
