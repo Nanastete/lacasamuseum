@@ -55,9 +55,3 @@ Es este contraste entre la aventura exterior y la serenidad interior lo que conv
 ## Reserva tu Paréntesis Histórico
 
 No dejes que el azar decida dónde dormirás en La Paz. Regálate una experiencia única que marcará tu viaje a Bolivia. Las habitaciones son limitadas para preservar la intimidad y la calidad del servicio.
-
-**¿Listo para vivir La Paz de otra manera?**
-
-Consulta la disponibilidad ahora mismo y asegúrate un lugar en la historia.
-
-<!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->[👉 **Reservar mi habitación en La Casa de Teresita**](https://casamuseum.netlify.app/)

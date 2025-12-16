@@ -55,9 +55,3 @@ It is this contrast between the adventure outside and the serenity inside that m
 ## Book Your Historic Getaway
 
 Don't let chance decide your sleep in La Paz. Treat yourself to a unique experience that will define your trip to Bolivia. Rooms are limited to preserve privacy and service quality.
-
-**Ready to experience La Paz differently?**
-
-Check availability now and secure your place in history.
-
-<!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->[👉 **Book my room at La Casa de Teresita**](https://casamuseum.netlify.app/)<!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
