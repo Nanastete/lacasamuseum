@@ -18,15 +18,41 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     i18n: true
+    editor:
+      preview: true
     fields:
-      - {label: "Title", name: "title", widget: "string", i18n: true}
+      - {label: "Title", name: "title", widget: "string", i18n: true, hint: "The main title of your blog post (50-60 characters recommended for SEO)"}
       - {label: "Publish Date", name: "date", widget: "datetime", i18n: duplicate}
-      - {label: "Featured Image", name: "image", widget: "image", i18n: duplicate}
-      - {label: "Excerpt", name: "excerpt", widget: "text", i18n: true}
-      - {label: "Body", name: "body", widget: "markdown", i18n: true}
+      - {label: "Featured Image", name: "image", widget: "image", i18n: duplicate, hint: "Main image shown in blog listing (1200x630px recommended)"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", i18n: true, hint: "Short summary (150-160 characters) shown in blog listing and search results"}
+      - {label: "Body", name: "body", widget: "markdown", i18n: true, hint: "Main content. Use ## for headings, ![alt text](image-url) for images, [link text](url) for links"}
       - {label: "Category", name: "category", widget: "select", options: ["Travel", "History", "Culture", "Tips"], i18n: duplicate}
-      - {label: "Meta Description", name: "metaDescription", widget: "text", i18n: true, required: false}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", i18n: true, required: false, hint: "SEO description (150-160 characters). If empty, excerpt will be used"}
+      - {label: "Meta Keywords", name: "keywords", widget: "list", i18n: true, required: false, hint: "SEO keywords (5-10 recommended)"}
+      - label: "Additional Images"
+        name: "additionalImages"
+        widget: "list"
+        i18n: true
+        required: false
+        max: 2
+        hint: "Add 1-2 extra images for your article. Reference them in body with ![alt text](/images/blog/filename.jpg)"
+        fields:
+          - {label: "Image", name: "src", widget: "image", hint: "Upload image (optimized size: 800-1200px wide)"}
+          - {label: "Alt Text", name: "alt", widget: "string", hint: "Describe the image for accessibility and SEO"}
+          - {label: "Caption", name: "caption", widget: "string", required: false, hint: "Optional caption shown below image"}
+      - label: "External Links"
+        name: "externalLinks"
+        widget: "list"
+        i18n: true
+        required: false
+        hint: "Add important external links. Use in body with [text](url)"
+        fields:
+          - {label: "Link Title", name: "title", widget: "string"}
+          - {label: "URL", name: "url", widget: "string"}
+          - {label: "Description", name: "description", widget: "string", required: false}
+      - {label: "Author", name: "author", widget: "string", default: "La Casa de Teresita", i18n: duplicate, required: false}
       - {label: "Published", name: "published", widget: "boolean", default: true, i18n: duplicate}
+      - {label: "Featured Post", name: "featured", widget: "boolean", default: false, i18n: duplicate, hint: "Mark as featured to highlight on blog page"}
 
   - name: "museum"
     label: "Museum Artworks"
