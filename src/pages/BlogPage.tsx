@@ -1,6 +1,6 @@
 // src/pages/BlogPage.jsx
 import { useState, useEffect } from 'react';
-import { BookOpen, Filter } from 'lucide-react';
+import { BookOpen, Filter, Star } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getBlogPostsByCategory } from '../utils/contentLoader';
 import BlogCard from '../components/BlogCard';
@@ -19,30 +19,51 @@ const BlogPage = () => {
   }, [language, selectedCategory]);
   
   const loadPosts = async () => {
-  setLoading(true);
-  try {
-    console.log('🔍 Loading posts for:', language, 'category:', selectedCategory);
-    const loadedPosts = await getBlogPostsByCategory(
-      selectedCategory === 'All' ? null : selectedCategory, 
-      language
-    );
-    console.log('✅ Posts loaded:', loadedPosts);
-    setPosts(loadedPosts);
-  } catch (error) {
-    console.error('Error loading blog posts:', error);
-    setPosts([]);
-  } finally {
-    setLoading(false);
-  }
-};
+    setLoading(true);
+    try {
+      console.log('🔍 Loading posts for:', language, 'category:', selectedCategory);
+      const loadedPosts = await getBlogPostsByCategory(
+        selectedCategory === 'All' ? null : selectedCategory, 
+        language
+      );
+      console.log('✅ Posts loaded:', loadedPosts);
+      setPosts(loadedPosts);
+    } catch (error) {
+      console.error('Error loading blog posts:', error);
+      setPosts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Separate featured and regular posts
+  const featuredPosts = posts.filter(post => post.featured);
+  const regularPosts = posts.filter(post => !post.featured);
+  
+  // SEO keywords for blog page
+  const blogKeywords = [
+    'La Paz blog',
+    'Bolivia travel blog',
+    'La Paz travel tips',
+    'Bolivia culture',
+    'La Paz history',
+    'South America travel',
+    'Bolivia tourism',
+    'La Casa de Teresita blog'
+  ];
+
+  const pageDescription = language === 'en'
+    ? 'Discover stories, travel tips, cultural insights and historical tales about La Paz, Bolivia. Read our blog for insider information about visiting La Casa de Teresita and exploring La Paz.'
+    : 'Descubre historias, consejos de viaje, insights culturales y relatos históricos sobre La Paz, Bolivia. Lee nuestro blog para información privilegiada sobre visitar La Casa de Teresita y explorar La Paz.';
   
   return (
     <div className="min-h-screen pt-20 bg-[#F8F5F2]">
       <SEOHelmet
         title={t.blog.title}
-        description={t.blog.metaDescription}
+        description={pageDescription}
         url="/blog"
         type="website"
+        keywords={blogKeywords}
       />
       
       {/* Hero Section */}
@@ -93,7 +114,9 @@ const BlogPage = () => {
         {loading ? (
           <div className="text-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#A85C32] mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading posts...</p>
+            <p className="mt-4 text-gray-600">
+              {language === 'en' ? 'Loading posts...' : 'Cargando artículos...'}
+            </p>
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-20">
@@ -101,11 +124,40 @@ const BlogPage = () => {
             <p className="text-xl text-gray-600">{t.blog.noPosts}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <>
+            {/* Featured Posts */}
+            {featuredPosts.length > 0 && selectedCategory === 'All' && (
+              <div className="mb-16">
+                <div className="flex items-center gap-3 mb-8">
+                  <Star className="h-8 w-8 text-[#A85C32]" />
+                  <h2 className="text-3xl font-bold text-[#2D5A4A]">
+                    {language === 'en' ? 'Featured Articles' : 'Artículos Destacados'}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  {featuredPosts.map((post) => (
+                    <BlogCard key={post.slug} post={post} featured={true} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Regular Posts */}
+            {regularPosts.length > 0 && (
+              <div>
+                {selectedCategory === 'All' && featuredPosts.length > 0 && (
+                  <h2 className="text-2xl font-bold text-[#2D5A4A] mb-8">
+                    {language === 'en' ? 'More Articles' : 'Más Artículos'}
+                  </h2>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {regularPosts.map((post) => (
+                    <BlogCard key={post.slug} post={post} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>
