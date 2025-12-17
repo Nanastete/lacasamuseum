@@ -15,10 +15,7 @@ keywords:
   - witches market
   - La Paz cable car
   - trip to Bolivia]
-additionalImages:
-  - src: /images/blog/mercado-brujas-la-paz.webp
-    alt: Colorful stall at the Witches’ Market featuring amulets, dried llama
-      fetuses, herbs, and potions
+additionalImages: []
 externalLinks:
   - url: https://www.lacasadeteresita.com
     title: Book now your experience at La Casa de Teresita
